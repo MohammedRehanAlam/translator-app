@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Translator Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-app">
+        <div class="language-bar">
+            <div class="language-selector">
+                <div class="dropdown">
+                    <button class="btn btn-language dropdown-toggle" type="button" id="rightLangBtn" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe"></i> Spanish
+                    </button>
+                    <div class="dropdown-menu language-dropdown" id="rightLangDropdown">
+                        <div class="search-box">
+                            <input type="text" class="form-control" placeholder="Search language..." id="rightLangSearch">
+                        </div>
+                        <div class="language-list" id="rightLangList">
+                            <a class="dropdown-item" href="#" data-lang="Afrikaans">Afrikaans</a>
+                            <a class="dropdown-item" href="#" data-lang="Albanian">Albanian</a>
+                            <a class="dropdown-item" href="#" data-lang="Amharic">Amharic</a>
+                            <a class="dropdown-item" href="#" data-lang="Arabic">Arabic</a>
+                            <a class="dropdown-item" href="#" data-lang="Armenian">Armenian</a>
+                            <a class="dropdown-item" href="#" data-lang="Assamese">Assamese</a>
+                            <a class="dropdown-item" href="#" data-lang="Azerbaijani">Azerbaijani</a>
+                            <a class="dropdown-item" href="#" data-lang="Bangla">Bangla</a>
+                            <a class="dropdown-item" href="#" data-lang="Basque">Basque</a>
+                            <a class="dropdown-item" href="#" data-lang="Belarusian">Belarusian</a>
+                            <a class="dropdown-item" href="#" data-lang="Bosnian">Bosnian</a>
+                            <a class="dropdown-item" href="#" data-lang="Bulgarian">Bulgarian</a>
+                            <a class="dropdown-item" href="#" data-lang="Catalan">Catalan</a>
+                            <a class="dropdown-item" href="#" data-lang="Cebuano">Cebuano</a>
+                            <a class="dropdown-item" href="#" data-lang="Chinese">Chinese</a>
+                            <a class="dropdown-item" href="#" data-lang="Croatian">Croatian</a>
+                            <a class="dropdown-item" href="#" data-lang="Czech">Czech</a>
+                            <a class="dropdown-item" href="#" data-lang="Danish">Danish</a>
+                            <a class="dropdown-item" href="#" data-lang="Dutch">Dutch</a>
+                            <a class="dropdown-item" href="#" data-lang="English">English</a>
+                            <a class="dropdown-item" href="#" data-lang="Esperanto">Esperanto</a>
+                            <a class="dropdown-item" href="#" data-lang="Estonian">Estonian</a>
+                            <a class="dropdown-item" href="#" data-lang="Finnish">Finnish</a>
+                            <a class="dropdown-item" href="#" data-lang="French">French</a>
+                            <a class="dropdown-item" href="#" data-lang="Galician">Galician</a>
+                            <a class="dropdown-item" href="#" data-lang="Georgian">Georgian</a>
+                            <a class="dropdown-item" href="#" data-lang="German">German</a>
+                            <a class="dropdown-item" href="#" data-lang="Greek">Greek</a>
+                            <a class="dropdown-item" href="#" data-lang="Gujarati">Gujarati</a>
+                            <a class="dropdown-item" href="#" data-lang="Haitian Creole">Haitian Creole</a>
+                            <a class="dropdown-item" href="#" data-lang="Hausa">Hausa</a>
+                            <a class="dropdown-item" href="#" data-lang="Hebrew">Hebrew</a>
+                            <a class="dropdown-item" href="#" data-lang="Hindi">Hindi</a>
+                            <a class="dropdown-item" href="#" data-lang="Hmong">Hmong</a>
+                            <a class="dropdown-item" href="#" data-lang="Hungarian">Hungarian</a>
+                            <a class="dropdown-item" href="#" data-lang="Icelandic">Icelandic</a>
+                            <a class="dropdown-item" href="#" data-lang="Igbo">Igbo</a>
+                            <a class="dropdown-item" href="#" data-lang="Indonesian">Indonesian</a>
+                            <a class="dropdown-item" href="#" data-lang="Irish">Irish</a>
+                            <a class="dropdown-item" href="#" data-lang="Italian">Italian</a>
+                            <a class="dropdown-item" href="#" data-lang="Japanese">Japanese</a>
+                            <a class="dropdown-item" href="#" data-lang="Javanese">Javanese</a>
+                            <a class="dropdown-item" href="#" data-lang="Kannada">Kannada</a>
+                            <a class="dropdown-item" href="#" data-lang="Kazakh">Kazakh</a>
+                            <a class="dropdown-item" href="#" data-lang="Khmer">Khmer</a>
+                            <a class="dropdown-item" href="#" data-lang="Korean">Korean</a>
+                            <a class="dropdown-item" href="#" data-lang="Kurdish">Kurdish</a>
+                            <a class="dropdown-item" href="#" data-lang="Kyrgyz">Kyrgyz</a>
+                            <a class="dropdown-item" href="#" data-lang="Lao">Lao</a>
+                            <a class="dropdown-item" href="#" data-lang="Latin">Latin</a>
+                            <a class="dropdown-item" href="#" data-lang="Latvian">Latvian</a>
+                            <a class="dropdown-item" href="#" data-lang="Lithuanian">Lithuanian</a>
+                            <a class="dropdown-item" href="#" data-lang="Luxembourgish">Luxembourgish</a>
+                            <a class="dropdown-item" href="#" data-lang="Macedonian">Macedonian</a>
+                            <a class="dropdown-item" href="#" data-lang="Malagasy">Malagasy</a>
+                            <a class="dropdown-item" href="#" data-lang="Malay">Malay</a>
+                            <a class="dropdown-item" href="#" data-lang="Malayalam">Malayalam</a>
+                            <a class="dropdown-item" href="#" data-lang="Maltese">Maltese</a>
+                            <a class="dropdown-item" href="#" data-lang="Maori">Maori</a>
+                            <a class="dropdown-item" href="#" data-lang="Marathi">Marathi</a>
+                            <a class="dropdown-item" href="#" data-lang="Mongolian">Mongolian</a>
+                            <a class="dropdown-item" href="#" data-lang="Myanmar (Burmese)">Myanmar (Burmese)</a>
+                            <a class="dropdown-item" href="#" data-lang="Nepali">Nepali</a>
+                            <a class="dropdown-item" href="#" data-lang="Norwegian">Norwegian</a>
+                            <a class="dropdown-item" href="#" data-lang="Odia (Oriya)">Odia (Oriya)</a>
+                            <a class="dropdown-item" href="#" data-lang="Pashto">Pashto</a>
+                            <a class="dropdown-item" href="#" data-lang="Persian">Persian</a>
+                            <a class="dropdown-item" href="#" data-lang="Polish">Polish</a>
+                            <a class="dropdown-item" href="#" data-lang="Portuguese">Portuguese</a>
+                            <a class="dropdown-item" href="#" data-lang="Punjabi">Punjabi</a>
+                            <a class="dropdown-item" href="#" data-lang="Romanian">Romanian</a>
+                            <a class="dropdown-item" href="#" data-lang="Russian">Russian</a>
+                            <a class="dropdown-item" href="#" data-lang="Samoan">Samoan</a>
+                            <a class="dropdown-item" href="#" data-lang="Scots Gaelic">Scots Gaelic</a>
+                            <a class="dropdown-item" href="#" data-lang="Serbian">Serbian</a>
+                            <a class="dropdown-item" href="#" data-lang="Sesotho">Sesotho</a>
+                            <a class="dropdown-item" href="#" data-lang="Shona">Shona</a>
+                            <a class="dropdown-item" href="#" data-lang="Sindhi">Sindhi</a>
+                            <a class="dropdown-item" href="#" data-lang="Sinhala">Sinhala</a>
+                            <a class="dropdown-item" href="#" data-lang="Slovak">Slovak</a>
+                            <a class="dropdown-item" href="#" data-lang="Slovenian">Slovenian</a>
+                            <a class="dropdown-item" href="#" data-lang="Somali">Somali</a>
+                            <a class="dropdown-item active" href="#" data-lang="Spanish">Spanish</a>
+                            <a class="dropdown-item" href="#" data-lang="Sundanese">Sundanese</a>
+                            <a class="dropdown-item" href="#" data-lang="Swahili">Swahili</a>
+                            <a class="dropdown-item" href="#" data-lang="Swedish">Swedish</a>
+                            <a class="dropdown-item" href="#" data-lang="Tagalog">Tagalog</a>
+                            <a class="dropdown-item" href="#" data-lang="Tajik">Tajik</a>
+                            <a class="dropdown-item" href="#" data-lang="Tamil">Tamil</a>
+                            <a class="dropdown-item" href="#" data-lang="Telugu">Telugu</a>
+                            <a class="dropdown-item" href="#" data-lang="Thai">Thai</a>
+                            <a class="dropdown-item" href="#" data-lang="Turkish">Turkish</a>
+                            <a class="dropdown-item" href="#" data-lang="Ukrainian">Ukrainian</a>
+                            <a class="dropdown-item" href="#" data-lang="Urdu">Urdu</a>
+                            <a class="dropdown-item" href="#" data-lang="Uyghur">Uyghur</a>
+                            <a class="dropdown-item" href="#" data-lang="Uzbek">Uzbek</a>
+                            <a class="dropdown-item" href="#" data-lang="Vietnamese">Vietnamese</a>
+                            <a class="dropdown-item" href="#" data-lang="Welsh">Welsh</a>
+                            <a class="dropdown-item" href="#" data-lang="Xhosa">Xhosa</a>
+                            <a class="dropdown-item" href="#" data-lang="Yiddish">Yiddish</a>
+                            <a class="dropdown-item" href="#" data-lang="Yoruba">Yoruba</a>
+                            <a class="dropdown-item" href="#" data-lang="Zulu">Zulu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear-chat-container">
+                <button class="btn btn-danger" id="clearChatBtn">
+                    <i class="fas fa-trash"></i> Clear Chat
+                </button>
+            </div>
+            <div class="language-selector">
+                <div class="dropdown">
+                    <button class="btn btn-language dropdown-toggle" type="button" id="leftLangBtn" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe"></i> English
+                    </button>
+                    <div class="dropdown-menu language-dropdown" id="leftLangDropdown">
+                        <div class="search-box">
+                            <input type="text" class="form-control" placeholder="Search language..." id="leftLangSearch">
+                        </div>
+                        <div class="language-list" id="leftLangList">
+                            <a class="dropdown-item" href="#" data-lang="Afrikaans">Afrikaans</a>
+                            <a class="dropdown-item" href="#" data-lang="Albanian">Albanian</a>
+                            <a class="dropdown-item" href="#" data-lang="Amharic">Amharic</a>
+                            <a class="dropdown-item" href="#" data-lang="Arabic">Arabic</a>
+                            <a class="dropdown-item" href="#" data-lang="Armenian">Armenian</a>
+                            <a class="dropdown-item" href="#" data-lang="Assamese">Assamese</a>
+                            <a class="dropdown-item" href="#" data-lang="Azerbaijani">Azerbaijani</a>
+                            <a class="dropdown-item" href="#" data-lang="Bangla">Bangla</a>
+                            <a class="dropdown-item" href="#" data-lang="Basque">Basque</a>
+                            <a class="dropdown-item" href="#" data-lang="Belarusian">Belarusian</a>
+                            <a class="dropdown-item" href="#" data-lang="Bosnian">Bosnian</a>
+                            <a class="dropdown-item" href="#" data-lang="Bulgarian">Bulgarian</a>
+                            <a class="dropdown-item" href="#" data-lang="Catalan">Catalan</a>
+                            <a class="dropdown-item" href="#" data-lang="Cebuano">Cebuano</a>
+                            <a class="dropdown-item" href="#" data-lang="Chinese">Chinese</a>
+                            <a class="dropdown-item" href="#" data-lang="Croatian">Croatian</a>
+                            <a class="dropdown-item" href="#" data-lang="Czech">Czech</a>
+                            <a class="dropdown-item" href="#" data-lang="Danish">Danish</a>
+                            <a class="dropdown-item" href="#" data-lang="Dutch">Dutch</a>
+                            <a class="dropdown-item active" href="#" data-lang="English">English</a>
+                            <a class="dropdown-item" href="#" data-lang="Esperanto">Esperanto</a>
+                            <a class="dropdown-item" href="#" data-lang="Estonian">Estonian</a>
+                            <a class="dropdown-item" href="#" data-lang="Finnish">Finnish</a>
+                            <a class="dropdown-item" href="#" data-lang="French">French</a>
+                            <a class="dropdown-item" href="#" data-lang="Galician">Galician</a>
+                            <a class="dropdown-item" href="#" data-lang="Georgian">Georgian</a>
+                            <a class="dropdown-item" href="#" data-lang="German">German</a>
+                            <a class="dropdown-item" href="#" data-lang="Greek">Greek</a>
+                            <a class="dropdown-item" href="#" data-lang="Gujarati">Gujarati</a>
+                            <a class="dropdown-item" href="#" data-lang="Haitian Creole">Haitian Creole</a>
+                            <a class="dropdown-item" href="#" data-lang="Hausa">Hausa</a>
+                            <a class="dropdown-item" href="#" data-lang="Hebrew">Hebrew</a>
+                            <a class="dropdown-item" href="#" data-lang="Hindi">Hindi</a>
+                            <a class="dropdown-item" href="#" data-lang="Hmong">Hmong</a>
+                            <a class="dropdown-item" href="#" data-lang="Hungarian">Hungarian</a>
+                            <a class="dropdown-item" href="#" data-lang="Icelandic">Icelandic</a>
+                            <a class="dropdown-item" href="#" data-lang="Igbo">Igbo</a>
+                            <a class="dropdown-item" href="#" data-lang="Indonesian">Indonesian</a>
+                            <a class="dropdown-item" href="#" data-lang="Irish">Irish</a>
+                            <a class="dropdown-item" href="#" data-lang="Italian">Italian</a>
+                            <a class="dropdown-item" href="#" data-lang="Japanese">Japanese</a>
+                            <a class="dropdown-item" href="#" data-lang="Javanese">Javanese</a>
+                            <a class="dropdown-item" href="#" data-lang="Kannada">Kannada</a>
+                            <a class="dropdown-item" href="#" data-lang="Kazakh">Kazakh</a>
+                            <a class="dropdown-item" href="#" data-lang="Khmer">Khmer</a>
+                            <a class="dropdown-item" href="#" data-lang="Korean">Korean</a>
+                            <a class="dropdown-item" href="#" data-lang="Kurdish">Kurdish</a>
+                            <a class="dropdown-item" href="#" data-lang="Kyrgyz">Kyrgyz</a>
+                            <a class="dropdown-item" href="#" data-lang="Lao">Lao</a>
+                            <a class="dropdown-item" href="#" data-lang="Latin">Latin</a>
+                            <a class="dropdown-item" href="#" data-lang="Latvian">Latvian</a>
+                            <a class="dropdown-item" href="#" data-lang="Lithuanian">Lithuanian</a>
+                            <a class="dropdown-item" href="#" data-lang="Luxembourgish">Luxembourgish</a>
+                            <a class="dropdown-item" href="#" data-lang="Macedonian">Macedonian</a>
+                            <a class="dropdown-item" href="#" data-lang="Malagasy">Malagasy</a>
+                            <a class="dropdown-item" href="#" data-lang="Malay">Malay</a>
+                            <a class="dropdown-item" href="#" data-lang="Malayalam">Malayalam</a>
+                            <a class="dropdown-item" href="#" data-lang="Maltese">Maltese</a>
+                            <a class="dropdown-item" href="#" data-lang="Maori">Maori</a>
+                            <a class="dropdown-item" href="#" data-lang="Marathi">Marathi</a>
+                            <a class="dropdown-item" href="#" data-lang="Mongolian">Mongolian</a>
+                            <a class="dropdown-item" href="#" data-lang="Myanmar (Burmese)">Myanmar (Burmese)</a>
+                            <a class="dropdown-item" href="#" data-lang="Nepali">Nepali</a>
+                            <a class="dropdown-item" href="#" data-lang="Norwegian">Norwegian</a>
+                            <a class="dropdown-item" href="#" data-lang="Odia (Oriya)">Odia (Oriya)</a>
+                            <a class="dropdown-item" href="#" data-lang="Pashto">Pashto</a>
+                            <a class="dropdown-item" href="#" data-lang="Persian">Persian</a>
+                            <a class="dropdown-item" href="#" data-lang="Polish">Polish</a>
+                            <a class="dropdown-item" href="#" data-lang="Portuguese">Portuguese</a>
+                            <a class="dropdown-item" href="#" data-lang="Punjabi">Punjabi</a>
+                            <a class="dropdown-item" href="#" data-lang="Romanian">Romanian</a>
+                            <a class="dropdown-item" href="#" data-lang="Russian">Russian</a>
+                            <a class="dropdown-item" href="#" data-lang="Samoan">Samoan</a>
+                            <a class="dropdown-item" href="#" data-lang="Scots Gaelic">Scots Gaelic</a>
+                            <a class="dropdown-item" href="#" data-lang="Serbian">Serbian</a>
+                            <a class="dropdown-item" href="#" data-lang="Sesotho">Sesotho</a>
+                            <a class="dropdown-item" href="#" data-lang="Shona">Shona</a>
+                            <a class="dropdown-item" href="#" data-lang="Sindhi">Sindhi</a>
+                            <a class="dropdown-item" href="#" data-lang="Sinhala">Sinhala</a>
+                            <a class="dropdown-item" href="#" data-lang="Slovak">Slovak</a>
+                            <a class="dropdown-item" href="#" data-lang="Slovenian">Slovenian</a>
+                            <a class="dropdown-item" href="#" data-lang="Somali">Somali</a>
+                            <a class="dropdown-item" href="#" data-lang="Spanish">Spanish</a>
+                            <a class="dropdown-item" href="#" data-lang="Sundanese">Sundanese</a>
+                            <a class="dropdown-item" href="#" data-lang="Swahili">Swahili</a>
+                            <a class="dropdown-item" href="#" data-lang="Swedish">Swedish</a>
+                            <a class="dropdown-item" href="#" data-lang="Tagalog">Tagalog</a>
+                            <a class="dropdown-item" href="#" data-lang="Tajik">Tajik</a>
+                            <a class="dropdown-item" href="#" data-lang="Tamil">Tamil</a>
+                            <a class="dropdown-item" href="#" data-lang="Telugu">Telugu</a>
+                            <a class="dropdown-item" href="#" data-lang="Thai">Thai</a>
+                            <a class="dropdown-item" href="#" data-lang="Turkish">Turkish</a>
+                            <a class="dropdown-item" href="#" data-lang="Ukrainian">Ukrainian</a>
+                            <a class="dropdown-item" href="#" data-lang="Urdu">Urdu</a>
+                            <a class="dropdown-item" href="#" data-lang="Uyghur">Uyghur</a>
+                            <a class="dropdown-item" href="#" data-lang="Uzbek">Uzbek</a>
+                            <a class="dropdown-item" href="#" data-lang="Vietnamese">Vietnamese</a>
+                            <a class="dropdown-item" href="#" data-lang="Welsh">Welsh</a>
+                            <a class="dropdown-item" href="#" data-lang="Xhosa">Xhosa</a>
+                            <a class="dropdown-item" href="#" data-lang="Yiddish">Yiddish</a>
+                            <a class="dropdown-item" href="#" data-lang="Yoruba">Yoruba</a>
+                            <a class="dropdown-item" href="#" data-lang="Zulu">Zulu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-container" id="mainChat">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <div class="user-selection">
+            <button class="user-btn" id="user2Btn" data-user="2">
+                <i class="fas fa-user"></i> User 2
+            </button>
+            <button class="user-btn" id="user1Btn" data-user="1">
+                <i class="fas fa-user"></i> User 1
+            </button>
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Type your message..." onfocus="updatePlaceholder()">
+            <button onclick="sendMessage()" class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
